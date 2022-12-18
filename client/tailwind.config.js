@@ -5,7 +5,12 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        chivo: ['Chivo Mono', 'sans-serif'],
+        gothic: ['Didact Gothic', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }

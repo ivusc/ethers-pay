@@ -29,8 +29,17 @@ export const TransactionContextProvider = ({ children } : { children: React.Reac
 
   const getTransactions = async () => {
     const transactions : any[] = await contract?.call('getTransactions');
-
-    return transactions;
+    console.log(transactions);
+    const parsedTransactions : ITransaction[] = transactions.map((transaction:any, i: number) => ({
+      sender: transaction.payer,
+      receiver: transaction.payee,
+      amount: Number(ethers.utils.formatEther(transaction.amount.toString())),
+      message: transaction.message,
+      dateTime: new Date(transaction.datetime.toNumber() * 1000),
+      id: i,
+    }))
+    console.log(parsedTransactions)
+    return parsedTransactions;
   }
   
   const transfer = async (form:any) => {
