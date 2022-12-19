@@ -2,6 +2,7 @@ import { ethers } from "ethers";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Logo from '../assets/logo.svg';
+import Loader from "../components/Loader";
 import { useTransactionContext } from "../contexts/transaction";
 
 export default function Home() {
@@ -36,7 +37,7 @@ export default function Home() {
         <button onClick={()=>{
           connect();
           navigate('/');
-        }} className='p-2 bg-blue-500 w-[10%] mt-2 rounded-lg text-white font-semibold font-gothic'>Connect Wallet</button> 
+        }} className='p-2 bg-blue-500 lg:w-[10%] w-full mt-2 rounded-lg text-white font-semibold font-gothic'>Connect Wallet</button> 
         : (
           <div  className="w-full">
               <form onSubmit={handleSubmit} className='flex flex-col mb-3'>
@@ -51,7 +52,7 @@ export default function Home() {
                   <button className='p-2 bg-blue-500 lg:w-[10%] w-full lg:mt-2 mt-8 rounded-lg text-white font-semibold font-gothic' onClick={()=>navigate('/stats')}>View Transactions</button>
                 </div>
               </form>
-              { isLoading && <p className="text-white font-semibold text-xl">Loading...</p> }
+              { isLoading && <Loader/> }
           </div>
       )}
     </div>

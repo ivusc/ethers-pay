@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import Loader from '../components/Loader';
 import { useTransactionContext } from '../contexts/transaction';
 
 const Transactions = () => {
@@ -25,8 +26,9 @@ const Transactions = () => {
   return (
     <div className='min-h-screen h-full bg-gradient-to-br pb-8 pt-8 from-slate-900 to-gray-900 flex flex-col items-center lg:justify-center justify-start lg:px-[10em] px-[2em] space-y-10 w-full'>
       <h1 className="lg:text-4xl font-bold text-white text-lg font-chivo">View All Transactions</h1>
-      <h3 className="lg:text-2xl font-semibold text-white text-base font-chivo"><>Contract Address: { address }</></h3>
-      {isLoading ? <p className='text-white text-xl font-chivo'>Loading...</p> : (
+      <h3 className="lg:text-2xl font-semibold text-white text-base font-chivo"><>Signed in as: { address }</></h3>
+      <h3 className="lg:text-2xl font-semibold text-white text-base font-chivo"><>Contract Address: 0xcB37553c8810742f5CB1872fE9D553e21483B5e0</></h3>
+      {isLoading ? <Loader/> : (
         <>
           <h3 className="text-2xl font-bold text-white font-chivo"><>Total Transactions: {noOfTransactions} </></h3>
           <div className='rounded-lg border-2 border-gray-600 overflow-x-auto relative'>
